@@ -1,7 +1,4 @@
 import math
-import time
-
-start = time.time()
 
 def get_num_divisible(n, p):
     i = 1
@@ -23,7 +20,6 @@ def get_p_adic(frac, p, prec=10):
     p_pow = get_num_divisible(frac[0], p) - get_num_divisible(frac[1], p)
     i = p_pow
     while i < prec:
-        print(frac)
         if frac[0] == 0:
             index_dict[i] = 0
             i += 1
@@ -43,7 +39,6 @@ def get_p_adic(frac, p, prec=10):
         else:
             index_dict[i] = 0
         i += 1
-        print(index_dict)
     return index_dict
 
 def convert_to_formula(index_dict, p):
@@ -62,11 +57,8 @@ def convert_to_formula(index_dict, p):
 
 if __name__ == '__main__':
     p = 5
-    prec = 11
-    frac = [5, 1]
+    prec = 100
+    frac = [6369051672525773, 4503599627370496]
     index_dict = get_p_adic(frac, p, prec)
     f = convert_to_formula(index_dict, p)
-    end = time.time()
     print('p = {}, alpha = {}/{} のp進展開:\n  {}'.format(p, frac[0], frac[1], f))
-    print('処理時間: {}'.format(end - start))
-
